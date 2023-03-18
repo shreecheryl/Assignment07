@@ -54,6 +54,13 @@ form.addEventListener('submit', (e) => {
     count++;
     empCount.innerHTML = count;
 
-})
+});
 
 // DELETE EMPLOYEE
+table.addEventListener("click", (e) => {
+    if (e.target.tagName == "BUTTON") {
+        table.deleteRow(e.target.parentElement.parentElement.rowIndex);
+        count--;
+        empCount.innerHTML = count;
+    }
+});

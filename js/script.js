@@ -2,6 +2,7 @@
 const $ = (id) => document.getElementById(id);
 let form = $("addForm");
 let table = $("employees");
+let empCount = $("empCount");
 
 // SET A COUNT VARIABLE TO DISPLAY NEXT TO EMPLOYEES HEADER
 let count = 0;
@@ -27,6 +28,7 @@ form.addEventListener('submit', (e) => {
     let cellExtension = row.insertCell();
     let cellEmail = row.insertCell();
     let cellDepartment = row.insertCell();
+    let cellDelete = row.insertCell();
 
     // APPEND THE TEXT VALUES AS TEXT NODES WITHIN THE CELLS
     cellID.appendChild(document.createTextNode(employeeID));
@@ -36,12 +38,21 @@ form.addEventListener('submit', (e) => {
     cellDepartment.appendChild(document.createTextNode(department));
 
     // CREATE THE DELETE BUTTON
+    let deleteBtn = document.createElement('button');
+    deleteBtn.className = 'btn btn-danger btn-sm';
+    let textDelete = document.createTextNode('X');
+    deleteBtn.appendChild(textDelete);
+    cellDelete.appendChild(deleteBtn);
 
     // RESET THE FORM
+    form.reset()
 
     // SET FOCUS BACK TO THE ID TEXT BOX
+    $("id").focus;
 
     // INCREMENENT THE NUMBER OF EMPLOYEES IN THE TABLE
+    count++;
+    empCount.innerHTML = count;
 
 })
 

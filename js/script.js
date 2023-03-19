@@ -48,7 +48,7 @@ form.addEventListener('submit', (e) => {
     form.reset()
 
     // SET FOCUS BACK TO THE ID TEXT BOX
-    $("id").focus;
+    $("id").focus();
 
     // INCREMENENT THE NUMBER OF EMPLOYEES IN THE TABLE
     count++;
@@ -59,8 +59,12 @@ form.addEventListener('submit', (e) => {
 // DELETE EMPLOYEE
 table.addEventListener("click", (e) => {
     if (e.target.tagName == "BUTTON") {
-        table.deleteRow(e.target.parentElement.parentElement.rowIndex);
-        count--;
-        empCount.innerHTML = count;
+        let deletePerson = e.target.parentElement.parentElement.children[1].innerHTML;
+        let confirmed = confirm(`Are you sure you want to delete ${deletePerson}?`);
+        if (confirmed) {
+            table.deleteRow(e.target.parentElement.parentElement.rowIndex);
+            count--;
+            empCount.innerHTML = count;
+        }
     }
 });
